@@ -8,21 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-                        Button(action: {
-                            // Action when tapped
-                            print("Button was tapped!")
-                        }) {
-                            // Label of the button
-                            Text("Hello")
-                                .font(.system(size: 50, weight: .bold, design: .default))
-                                .padding(100)
-                                .foregroundColor(.black)
-                                .background(Color.red)
-                                .cornerRadius(100)
-                        }        }
-        .padding()
+    @State private var message: String = "Press the button"
+        @State private var buttonLabel = "Hello"
+        
+        var body: some View {
+            VStack(spacing: 20) {
+                
+                    Text(message)
+                        .font(.title)
+                        .padding()
+                
+                
+                Button(action: {
+                    if buttonLabel == "Hello" {
+                        message = "Hello World!"
+                        buttonLabel = "OK"
+                    } else {
+                        message = "Press the button"
+                        buttonLabel = "Hello"
+                    }
+                }) {
+                    Text(buttonLabel)
+                        .font(.headline)
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.red)
+                        .cornerRadius(100)
+                }
+            }
+            .padding()
     }
 }
 
